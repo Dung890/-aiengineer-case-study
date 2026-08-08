@@ -4,6 +4,7 @@ A working prototype of a tax platform for clients and CPAs, built from scratch f
 AI Engineer case study. It covers all ten challenges as **one product** rather than ten
 separate demos.
 
+**Live:** https://aiengineercasestudy.vercel.app
 **Stack:** Next.js 16 · React 19 · TypeScript · Tailwind v4 · Radix · Zustand
 **Run it:** `npm install && npm run dev` → http://localhost:3000
 
