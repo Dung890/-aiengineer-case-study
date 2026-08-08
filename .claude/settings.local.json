@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "Bash(rm -rf ggscaffold)",
+      "Bash(npx --yes create-next-app@latest ggscaffold --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --turbopack --no-git --yes)",
+      "Bash(rm -rf C:/Users/bedap/AppData/Local/Temp/claude/C--Users-bedap-Documents-aiengineer-case-study/84ab519f-621f-4623-883d-957276768a4a/scratchpad/ggscaffold/.git C:/Users/bedap/AppData/Local/Temp/claude/C--Users-bedap-Documents-aiengineer-case-study/84ab519f-621f-4623-883d-957276768a4a/scratchpad/ggscaffold/.next)",
+      "Bash(cp -r C:/Users/bedap/AppData/Local/Temp/claude/C--Users-bedap-Documents-aiengineer-case-study/84ab519f-621f-4623-883d-957276768a4a/scratchpad/ggscaffold/. C:/Users/bedap/Documents/aiengineer_case_study/)",
+      "Bash(npm install *)"
+    ]
+  }
+}

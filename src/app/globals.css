@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   Green Growth design tokens
+   ------------------------------------------------------------------
+   One rule governs colour in this product: COLOUR MEANS "LOOK AT ME".
+   Resolved, healthy, verified states are deliberately quiet (neutral
+   ink + a small check) so that the things actually needing a human —
+   low confidence, discrepancies, approvals — are the only saturated
+   pixels on screen. That is what keeps a dense tax UI scannable.
+   ================================================================== */
+
+@theme {
+  /* Brand — deep pine green. Used for identity and primary actions only,
+     never for state, so it can't be confused with "verified". */
+  --color-brand-50: #f0f7f4;
+  --color-brand-100: #dbede4;
+  --color-brand-200: #b9dbcb;
+  --color-brand-300: #8cc2ab;
+  --color-brand-400: #59a385;
+  --color-brand-500: #38866a;
+  --color-brand-600: #276b54;
+  --color-brand-700: #1f5544;
+  --color-brand-800: #1a4437;
+  --color-brand-900: #16382e;
+  --color-brand-950: #0a1f19;
+
+  /* Ink — the neutral scale everything structural is built from. */
+  --color-ink-50: #f8f9fa;
+  --color-ink-100: #f1f3f5;
+  --color-ink-200: #e6e9ec;
+  --color-ink-300: #d4d9de;
+  --color-ink-400: #a8b1ba;
+  --color-ink-500: #7c8792;
+  --color-ink-600: #5c666f;
+  --color-ink-700: #454e56;
+  --color-ink-800: #2e353b;
+  --color-ink-900: #1b2126;
+  --color-ink-950: #0f1317;
+
+  /* AI — violet. The single colour that means "a model produced this".
+     Reserved exclusively for that, so it always reads unambiguously. */
+  --color-ai-50: #f4f2ff;
+  --color-ai-100: #ebe6ff;
+  --color-ai-200: #d9d0ff;
+  --color-ai-300: #bda9ff;
+  --color-ai-400: #9d78ff;
+  --color-ai-500: #7c4dff;
+  --color-ai-600: #6d2ff5;
+  --color-ai-700: #5b1fd8;
+  --color-ai-800: #4c1caf;
+  --color-ai-900: #401b8d;
+
+  /* Caution — amber. Low confidence, awaiting approval. */
+  --color-caution-50: #fffbeb;
+  --color-caution-100: #fef3c7;
+  --color-caution-200: #fde68a;
+  --color-caution-300: #fcd34d;
+  --color-caution-400: #fbbf24;
+  --color-caution-500: #f59e0b;
+  --color-caution-600: #d97706;
+  --color-caution-700: #b45309;
+  --color-caution-800: #92400e;
+
+  /* Danger — rose. Discrepancies, blockers, overdue. */
+  --color-danger-50: #fff1f2;
+  --color-danger-100: #ffe4e6;
+  --color-danger-200: #fecdd3;
+  --color-danger-300: #fda4af;
+  --color-danger-400: #fb7185;
+  --color-danger-500: #f43f5e;
+  --color-danger-600: #e11d48;
+  --color-danger-700: #be123c;
+  --color-danger-800: #9f1239;
+
+  /* Positive — emerald. Used sparingly: confirmations and refunds. */
+  --color-positive-50: #ecfdf5;
+  --color-positive-100: #d1fae5;
+  --color-positive-200: #a7f3d0;
+  --color-positive-500: #10b981;
+  --color-positive-600: #059669;
+  --color-positive-700: #047857;
+
+  /* Info — blue. Calculated/derived values and neutral system notes. */
+  --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-200: #bfdbfe;
+  --color-info-500: #3b82f6;
+  --color-info-600: #2563eb;
+  --color-info-700: #1d4ed8;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Tax figures are compared column-to-column constantly, so money gets
+     its own tabular-figure treatment rather than the body face. */
+  --text-figure: 0.9375rem;
+  --text-figure--line-height: 1.2;
+  --text-figure--font-weight: 500;
+
+  --radius-card: 0.75rem;
+
+  --shadow-panel: 0 1px 2px rgb(15 19 23 / 0.04), 0 4px 12px rgb(15 19 23 / 0.06);
+  --shadow-pop: 0 4px 12px rgb(15 19 23 / 0.08), 0 16px 40px rgb(15 19 23 / 0.12);
+}
+
+/* Professional tax software is used all day in bright offices and printed
+   from constantly. We commit to a single light theme and design it well
+   rather than half-doing two. */
+html {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-ink-100);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Money, line numbers and any digit that gets visually compared down a
+   column. Tabular figures keep the decimal points aligned. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Focus ring — one definition, applied everywhere, so keyboard users get a
+   consistent contract across the whole product. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* The dashed underline that marks a value the AI is unsure about.
+     Deliberately not a colour-only signal, so it survives colour-blindness
+     and greyscale printing. */
+  .underline-uncertain {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+
+  .scrollbar-slim {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-300) transparent;
+  }
+  .scrollbar-slim::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-slim::-webkit-scrollbar-thumb {
+    background-color: var(--color-ink-300);
+    border-radius: 4px;
+  }
+  .scrollbar-slim::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* Respect users who've asked the OS to calm things down. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
